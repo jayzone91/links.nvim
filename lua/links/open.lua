@@ -21,6 +21,8 @@ local function browse(link)
     vim.notify("Link copied to clipboard")
     vim.fn.setreg("*", link)
     vim.fn.setref("+", link)
+  elseif vim.fn.has("windows") == 1 then
+    exec("explorer.exe", link)
   elseif vim.fn.has("wsl") == 1 then
     exec("explorer.exe", link)
   elseif vim.fn.has("macunix") == 1 then
