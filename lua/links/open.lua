@@ -22,11 +22,9 @@ local function browse(link)
     vim.fn.setreg("*", link)
     vim.fn.setref("+", link)
     -- TODO: Check if OS is Windows or MacOS.
-  elseif vim.fn.has("windows") == 1 then
+  elseif helpers.is_win() then
     exec("explorer.exe", link)
-  elseif vim.fn.has("wsl") == 1 then
-    exec("explorer.exe", link)
-  elseif vim.fn.has("macunix") == 1 then
+  elseif helpers.is_mac() then
     exec("open", link)
   else
     exec("xdg-open", link)

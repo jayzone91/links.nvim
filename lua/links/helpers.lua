@@ -50,6 +50,14 @@ local function getScriptPath()
   return script_dir
 end
 
+local function is_win()
+  return vim.uv.os_uname().sysname:find("Windows") ~= nil
+end
+
+local function is_mac()
+  return vim.uv.os_uname().sysname:find("Darwin") ~= nil
+end
+
 return {
   fileExists = fileExists,
   hasCommand = hasCommand,
@@ -59,4 +67,6 @@ return {
   findAbsPath = findAbsPath,
   isHttpOrFileLink = isHttpOrFileLink,
   getScriptPath = getScriptPath,
+  is_win = is_win,
+  is_mac = is_mac,
 }
